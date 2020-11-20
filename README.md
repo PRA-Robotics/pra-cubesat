@@ -1,7 +1,10 @@
-# PRA Robotics CTE CubeSat Project
+# PRA Robotics CubeSat Project
 
 This repository contains documentation, resources, and submissions for the 
-2020/2021 PRA Robotics CTE Mission:CubeSat Challenge.
+2020/2021 PRA Robotics CubeSat Challenge.
+
+## NASA CubeQuest
+See our [NASA CubeSat Quest](NASA-CubeQuest.md) Document on NASA Cubesat competition
 
 ## Mission Propsoal
 See our [Mission Proposal](proposal.md) Document (CTE Challenge Phase 1)
