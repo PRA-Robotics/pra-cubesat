@@ -1,0 +1,44 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2513
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 STIXGeneral-Regular;}
+{\colortbl;\red255\green255\blue255;\red38\green38\blue38;\red117\green117\blue117;}
+{\*\expandedcolortbl;;\cssrgb\c20000\c20000\c20000;\cssrgb\c53333\c53333\c53333;}
+{\*\listtable{\list\listtemplateid1\listhybrid{\listlevel\levelnfc23\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\*\levelmarker \{disc\}}{\leveltext\leveltemplateid1\'01\uc0\u8226 ;}{\levelnumbers;}\fi-360\li720\lin720 }{\listname ;}\listid1}}
+{\*\listoverridetable{\listoverride\listid1\listoverridecount0\ls1}}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f0\fs26 \cf2 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+In an attempt to ameliorate tracking of objects between frames undergoing scale, illumination, and transformation, SIFT Flow was developed. SIFT Flow uses 128-dimensional SIFT descriptors as feature vectors for optical flow instead of three-color intensity feature vectors. This methodology offers the potential for robust feature tracking under scale, illumination, and affine transformation over time, but increases the computational cost and complexity as compared to optical flow. In SIFT Flow, dense SIFT descriptors are computed on the pixel scale for all images to form SIFT images. Given two such images, s
+\fs21\fsmilli10833 \sub 1 
+\fs26 \nosupersub and s
+\fs21\fsmilli10833 \sub 2
+\fs26 \nosupersub , SIFT flow solves for the flow vector, w(p)=(u(p), v(p)), which minimizes the SIFT Flow energy function E(w):\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0
+\f1 \cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\
+FIGURE 1 here:\expnd0\expndtw0\kerning0
+\uc0\u8232 
+\f0 \
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+where t and d are thresholds, \uc0\u951  is the small displacement term, and a is the smoothness term. With 128-dimensional feature vectors and no restriction on where features may be spatially located, however, SIFT Flow has a high computational overhead for minimizing the energy function. To address this, the authors of SIFT Flow implement dual-layer loopy belief propagation to decouple the horizontal flow and vertical flow components in the SIFT Flow energy function optimization to reduce process complexity and incorporate a coarse-to-fine matching scheme which iteratively estimates the flow from a coarse level to a fine level approaching the pixel scale.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+[0101] \uc0\u8232 \cf2 In some embodiments, this coarse-to-fine matching scheme is preconditioned by fluid lensing lenslet parameters, and bounded by predicted displacements and magnifications of lenslets.\
+\ls1\ilvl0\cf3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+[0102] \uc0\u8232 \cf2 According to some embodiments, another computer vision technique is used in the 3D airborne fluid lensing process, 3D reconstruction by Structure from Motion (SfM). SfM is a method of projective reconstruction from multiple uncalibrated images, like those captured from an airborne platform, for example. Analogous to SIFT, the development of SfM was motivated by the biological phenomenon of depth perception from the retinal motion field of a moving object or scene. SfM formulates this problem mathematically as the factorization of one matrix, containing all image points of all views. By solving for the camera matrix using the intrinsic properties of the imaging system and knowing the position and angle from which images were taken, the structure matrix of a near-field object can be solved to determine the distance to image pixels in a scene. According to embodiments, in the case of airborne remote sensing, aircraft telemetry is used to collect data for use by SfM.\
+\ls1\ilvl0\cf3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+[0103] \uc0\u8232 \cf2 In some embodiments, SfM is used to determine the 3D structure of an underwater environment after the 2D Fluid Lensing Process removes the distortions associated with ocean waves and generates multiple 2D views of a benthic scene. Recent advances in highly-parallelized solutions to the SfM matrix factorization using Graphical Processing Units (GPUs) suggest SfM may present a viable alternative to LiDAR-based elevation modelling from airborne platforms. The application of SfM to techniques for remote sensing using fluid lensing is further discussed below.\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf2 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+Example: Fluid Lensing Process in Test Pool Simulation\
+\pard\tx220\tx720\pardeftab720\li720\fi-720\partightenfactor0
+\ls1\ilvl0\cf3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+[0104] \uc0\u8232 \cf2 The following describes an example of the remote sensing technique using fluid lensing as used in a test pool simulation, according to some embodiments. In this example, the ocean wave fluid lensing phenomenon is modelled using a Fourier-domain ocean wave synthesis process, based on the Phillips spectrum, coupled with water's empirically-determined optical properties, and rendered with unbiased optical ray-tracing solutions to the render equation, modelling multispectral light transport, reflection, refraction, absorption, and dispersion. A test pool simulation is constructed using the aforementioned modelling scheme and consists of image quality assessment and color resolution test targets, bathymetry features, three-dimensional coral-textured objects, and two-dimensional coral-textured objects. The test pool is designed to explore the ocean wave fluid lensing phenomenon in a controlled simulation environment, where the ocean surface displacement, ambient illumination conditions, and optical water properties are known precisely. Furthermore, the test pool allows for quantitative validation and error analysis of the process for remote sensing using fluid lensing, and is rendered at sub-cm scale (2.5 mm) resolution with complex optical phenomena over a large computational domain (10 m\'d74.5 m) in 16-bit color. Simulation of the test pool was performed on the NASA Ames Research Center Pleiades Supercomputer through the NASA Earth Exchange (NEX) and represents over 500,000 CPU core-hours of computational time.\
+\ls1\ilvl0\cf3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+[0105] \uc0\u8232 \cf2 In some embodiments, remote sensing using fluid lensing employs physical models and representations developed for ocean wave fluid lensing. The remote sensing using fluid lensing process consists of four primary phases characterization of fluid distortion, determination of bathymetry of underwater objects using caustics, two-dimensional reconstruction images using SIFT Flow with fluid lensing lenslet parameters, and three-dimensional reconstruction of images using a Structure from Motion process.\
+\ls1\ilvl0\cf3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+[0106] \uc0\u8232 \cf2 Multispectral video simulations of the ocean wave fluid lensing phenomenon from the test pool are used to quantitatively validate the remote sensing using fluid lensing process through image quality assessment of reconstructed underwater objects using the Structural Similarity Index (SSIM), signal-to-noise ratio (SNR), and peak signal-to-noise ratio (PSNR) metrics. The test pool simulations are also used to explore the ocean wave fluid lensing phenomenon and discover relationships between caustic behavior, the fluid surface, and depth.\
+\ls1\ilvl0\cf3 \kerning1\expnd0\expndtw0 {\listtext	\uc0\u8226 	}\expnd0\expndtw0\kerning0
+[0107] \uc0\u8232 \cf2 The process of remote sensing using fluid lensing, including three-dimensional reconstruction phase, was successfully used on image data collected by a multirotor unmanned aerial vehicle (UAV) in real-world conditions as part of two cm-scale airborne remote sensing field campaigns of reef ecosystems in American Samoa and Hamelin Pool, Western Australia.}
