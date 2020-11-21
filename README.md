@@ -18,7 +18,8 @@ Has information about current hardware environment (pg 2), some power draw infor
 ## Markdown helpful hints
 Here's a [markdown help page](https://www.markdownguide.org/basic-syntax).
 
-And a ![cheatsheet for MarkDown syntax](Assets/F2B5D29F-08C5-46BA-900F-4AFC883F4D40.png)
+And a cheatsheet for MarkDown syntax. 
+![Cheatsheet](Assets/F2B5D29F-08C5-46BA-900F-4AFC883F4D40.png)
 
 ## [Judging_rubrik](Judging_rubrik.md)
 This is information out of the CTE Mission: Cubesat website on how they plan to judge the mission proposal
